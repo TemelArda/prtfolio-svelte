@@ -1,0 +1,21 @@
+/* Variables and mixins declared here will be available in all other SCSS files */
+$primaryFont : roc-grotesk, sans-serif;
+$secondaryFont :  p22-underground, sans-serif; 
+$altFont :  rig-solid-bold-reverse, sans-serif;
+//Font sizes
+$fontXS : 0.562rem;
+$fontS : 0.750rem;
+$fontR1 : 1.000rem;
+$fontL : 1.312rem;
+$fontXL : 1.750rem;
+$font2L : 2.375rem;
+$font3L : 3.188rem;
+$font4L : 4.188rem;
+$font5L : 5.625rem;
+$font6L : 7.500rem;
+$font7L : 9.375rem;
+//Colors
+$bgColor : #0D1117;
+$bgColor-400 : #181F2B;
+$bgColor-300 : #232E3E;
+$bgColor-200 : #2E3C52;
