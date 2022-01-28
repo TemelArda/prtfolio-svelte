@@ -56,7 +56,7 @@ export default class App {
             this.raycaster.setFromCamera(this.mouse, this.camera);
             let intersections = this.raycaster.intersectObjects([this.mesh], false);
             let intersection = (intersections.length) > 0 ? intersections[0] : null;
-
+            
             if (intersection !== null) {
                 gsap.to(this.material.uniforms.rippleInflunce, { duration: .5, value: 1. });
                 gsap.to(this.material.uniforms.mouseClickX, {

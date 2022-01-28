@@ -103,6 +103,9 @@
 				</ul>
 			</div>
 		</div>
+		<div>
+
+		</div>
 	</div>
 	<Canvas/>
 </section>
@@ -155,17 +158,22 @@
 			}
 			.line {
 				border-color: white;
-				width: 110%;
+				width: 100%;
+				margin: 1rem 0;
+				max-width: 900px;
 			}
 			.p {
-				margin: 0;
+				margin: 1rem 0;
 				padding: 0;
 				width: 75%;
 				text-align: center;
+				max-width: 600px;
+				line-height: 1.6;
 			}
 			.button {
 				position: relative;
 				margin-top: 1rem;
+				margin-right: 5rem;
 				height: 40px;
 				width: 160px;
 				border-style: solid;
