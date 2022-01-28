@@ -104,7 +104,7 @@
 			</div>
 		</div>
 	</div>
-	<Canvas container={Container}/>
+	<Canvas/>
 </section>
 <style lang="scss">
 	

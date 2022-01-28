@@ -1,9 +1,10 @@
 <script>
-	import { afterUpdate, onMount } from 'svelte';
+	import { onMount } from 'svelte';
     import App from "../WebGL.js";
     import load from "load-asset";
 	let CanvasElement;
-	async function getShaders(){
+	
+    async function getShaders(){
         let resp = await fetch("./shaders/vertex.glsl")
         let vertexShader = await resp.text()
         
@@ -12,23 +13,13 @@
         return [vertexShader, fragmentShader];    
         
     }
-    async function loadImages(){
-        let images = {
-            mask: "/Mask.png",
-            particle: "/particle.png",
-            texture: "/texture.jpg",
-        }
-        const data = await load.all(images);
-        return data;
-    }
-	afterUpdate(() => {});
+    
 
 	onMount( async () => {
         
-        let images = await loadImages();
         
         let shaders = await getShaders();
-        new App(CanvasElement, shaders, images);
+        new App(CanvasElement, shaders);
 
 	});
 </script>

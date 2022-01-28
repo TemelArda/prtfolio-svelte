@@ -1,10 +1,10 @@
+
+
 import * as THREE from 'three';
 import gsap from 'gsap';
 import Particles from './particles.js';
 import { smoothScroll } from './scroll.js';
 
-let canvasWidth;
-let canvasHeight;
 export default class App {
     constructor(canvas, shaders) {
         this.canvasWidth = window.innerWidth;
