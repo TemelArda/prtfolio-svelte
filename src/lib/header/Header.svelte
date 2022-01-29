@@ -1,7 +1,8 @@
 <script>
 	import gsap from 'gsap';
 	import { onMount } from 'svelte';
-
+	import Socials from '../socials.svelte';
+	
 	function openNavBar() {
 		gsap.to('.Nav-Bar', { width: '100%', duration: 0.75, ease: 'power2.inOut' });
 		gsap.to('.socials', { x: 0, duration: 1, delay: 0.35, ease: 'back.out(1.7)' });
@@ -19,6 +20,7 @@
 	<div class="Page-Logo">
 		<a class="logo" href="/">
 			<span>Arda Temel</span>
+			
 		</a>
 	</div>
 	<div class="Hamburger" on:click={openNavBar}>
@@ -50,28 +52,7 @@
 					</li>
 				</ul>
 			</nav>
-			<ul class="socials">
-				<li>
-					<a href="https://www.facebook.com/ardatemel" target="_blank">
-						<i class="fab fa-facebook-square" />
-					</a>
-				</li>
-				<li>
-					<a href="https://www.instagram.com/ardatemel/" target="_blank">
-						<i class="fab fa-instagram" />
-					</a>
-				</li>
-				<li>
-					<a href="https://www.linkedin.com/in/ardatemel/" target="_blank">
-						<i class="fab fa-linkedin" />
-					</a>
-				</li>
-				<li>
-					<a href="https://www.linkedin.com/in/ardatemel/" target="_blank">
-						<i class="fab fa-github" />
-					</a>
-				</li>
-			</ul>
+			<Socials />
 		</div>
 	</div>
 	<div class = "code-container">
@@ -232,28 +213,7 @@
 			}
 		}
 	}
-	.socials {
-		margin-top: 2rem;
-		display: flex;
-		justify-content: center;
-		list-style: none;
-		padding: 0;
-		width: auto;
-		transform: translateX(1200px);
-		li {
-			margin: 0 1rem;
-			a {
-				font-size: $font2L;
-				color: white;
-				opacity: 83%;
-				cursor: pointer;
-				transition: all 0.3s ease-in-out;
-				&:hover {
-					color: #5fd972;
-				}
-			}
-		}
-	}
+	
 	.code-container {
 		position: fixed;
 		bottom: 0;

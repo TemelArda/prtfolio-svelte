@@ -1,11 +1,33 @@
 <script context="module">
 	export const prerender = true;
+	import { page } from '$app/stores';
 </script>
 
 <script>
-	import Canvas from "$lib/Canvas.svelte";
-	
-	let Container
+	import Canvas from '$lib/Canvas.svelte';
+
+	export let experience = [
+		{
+			Title: "Creatvie Developer Intern",
+			Company: "BMS Labs",
+			Location: "Netherlands, Enschede",
+			Dates: "Sept 2020 - Sept 2021",
+		},
+		{
+			Title: "Software Developer Intern",
+			Company: "Ravico Analytics",
+			Location: "Toronto, Ontario",
+			Dates: "May 2020 - Sept 2020",
+		},
+		{
+			Title: "Peer Advisor",
+			Company: "Lassonde school of engineering", 
+			Location: "Toronto, Ontario",
+			Dates: "May 2020 - Sept 2020",
+		}
+
+	]
+	let Container;
 </script>
 
 <svelte:head>
@@ -13,7 +35,7 @@
 </svelte:head>
 
 <section>
-	<div class="container"  bind:this={Container}>
+	<div class="container" bind:this={Container}>
 		<div class=" grid">
 			<div class="scroll-down">
 				<a href="/">
@@ -43,6 +65,7 @@
 					sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
 					est laborum.
 				</p>
+
 				<div class="button">
 					<a href="/">
 						Resume
@@ -69,48 +92,33 @@
 					<li><p>Math and Stats chair Honor roll</p></li>
 				</ul>
 			</div>
-			<div class="exprience-container">
+			<div class="experience-container">
 				<h2 class="h2">Experience</h2>
 				<hr />
-				<h3 class="h3">Creative Developer Intern</h3>
-				<div class="info">
-					<h4 class="h4">BMS Labs</h4>
-					<p>2020 Sept - 2021 Sept</p>
-					<p>Enschede, Netherlands</p>
+				<div class="experience-content">
+					{#each experience as e, i}
+					<div class="experience-card">
+						<h3 class="h3">{e.Title}</h3>
+						<hr>
+						<div class="experience-info">
+							<h4 class="h4">{e.Company}</h4>
+							<p>{e.Location}</p>
+						</div>
+						<p class="date">{e.Dates}</p>
+						<ul>
+							<li><p>Math and Stats chair Honor roll</p></li>
+						</ul>
+					</div>
+					{/each}
 				</div>
-				<ul>
-					<li><p>Math and Stats chair Honor roll</p></li>
-				</ul>
-				<br />
-				<h3 class="h3">Software Developer Intern</h3>
-				<div class="info">
-					<h4 class="h4">Ravico Analatycs</h4>
-					<p>2020 May - 2020 Sept</p>
-					<p>Toronto, ON</p>
-				</div>
-				<ul>
-					<li><p>Math and Stats chair Honor roll</p></li>
-				</ul>
-				<br />
-				<h3 class="h3">Peer Advisor</h3>
-				<div class="info">
-					<h4 class="h4">Lassonde School of Engineering</h4>
-					<p>2019 May - 2019 Sept</p>
-					<p>Toronto, ON</p>
-				</div>
-				<ul>
-					<li><p>Math and Stats chair Honor roll</p></li>
-				</ul>
 			</div>
 		</div>
-		<div>
-
-		</div>
+		<div />
 	</div>
-	<Canvas/>
+	<Canvas pageName={$page.url.pathname} />
 </section>
+
 <style lang="scss">
-	
 	.container {
 		position: absolute;
 		width: 100%;
@@ -357,12 +365,70 @@
 		margin: 0;
 		align-self: center;
 	}
-	.exprience-container {
-		grid-column: span 2/6;
+	.experience-container {
+		grid-column: span 6/7;
 		grid-row: span 1/3;
-		padding: 8px;
+		padding: 12px;
 		margin: 0;
 		justify-self: center;
+		align-self: start;
+		flex-wrap: wrap;
+		.experience-content {
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+		}
+		.h4{
+			color: white;
+			font-family: $primaryFont;
+			font-weight: 400;
+			font-style: normal;
+			font-size: $fontL;
+			margin: 0;
+			margin-top: 4px;
+			padding: 0;
+		}
+		.h3{
+			color: white;
+			font-family: $primaryFont;
+			font-weight: 400;
+			font-style: normal;
+			font-size: $fontXL;
+			margin: 0;
+			margin-top: 4px;
+			padding: 0;
+		}
+		.experience-card{
+			margin: 1rem;
+			background: rgb(255,255,255);
+			background: radial-gradient(circle, rgba(255,255,255,0.5) 23%, rgba(103,191,178,0.5) 65%, rgba(57,195,128,1) 100%);
+			border: rgba(57,195,128,1) solid 1px;;  
+			border-radius: 5px;
+			padding: 1rem;
+			box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2), 0px 6px 10px rgba(0, 0, 0, 0.14), 0px 1px 18px rgba(0, 0, 0, 0.12);
+			&:hover{
+				transform: translateY(-5px);
+			}
+			transition: all 0.3s ease-in-out;
+		}
+		.experience-info{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
+			color: $bgColor;
+		}
+		p{
+			color: white;
+			font-family: $secondaryFont;
+			font-weight: 400;
+			margin: 0;
+			margin-top: 4px;
+			padding: 0;
+		}
+		.date{
+			text-align: end;
+		}
 	}
 	@-webkit-keyframes moveDown {
 		0% {

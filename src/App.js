@@ -5,13 +5,12 @@ import gsap from 'gsap';
 import Particles from './particles.js';
 import { smoothScroll } from './scroll.js';
 
-export default class App {
+export class AppBase {
     constructor(canvas, shaders) {
         this.canvasWidth = window.innerWidth;
         this.canvasHeight = window.innerHeight;
         this.time = 0;
         this.mouse = new THREE.Vector2();
-        this.raycaster = new THREE.Raycaster();
         this.renderer = new THREE.WebGLRenderer({
             canvas,
             alpha: true,
@@ -25,75 +24,19 @@ export default class App {
         this.scene = new THREE.Scene();
         this.vert = shaders[0];
         this.frag = shaders[1];
-        this.pointMultiplier =  window.innerHeight / ( Math.tan(0.5 * 60.0 * Math.PI / 180.0));
+        
         //Initilize Events, Scene, Objects, and Camera
-        this.initScene();
-        this.initTextures();
-        this.initParticles();
-        this.windowEvents();
-        this.addMesh();
-        this.render();
+
     }
     windowEvents() {
         
         //Responsive Canvas
         window.addEventListener('resize', this.resize.bind(this));
-
-        //On mouse down
-        window.addEventListener('mousedown', e => {
-
-        });
-
-        window.addEventListener('mouseup', e => {
-            //this.material.uniforms.u_mouseClick.value = new THREE.Vector2 (0, 0);
-
-        });
-
-        window.addEventListener('mousemove', e => {
-            this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-            this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
-
-            this.raycaster.setFromCamera(this.mouse, this.camera);
-            let intersections = this.raycaster.intersectObjects([this.mesh], false);
-            let intersection = (intersections.length) > 0 ? intersections[0] : null;
-            
-            if (intersection !== null) {
-                gsap.to(this.material.uniforms.rippleInflunce, { duration: .5, value: 1. });
-                gsap.to(this.material.uniforms.mouseClickX, {
-                    duration: .5,
-                    delay: 0.2,
-                    ease: "SlowMo",
-                    value: intersection.point.x
-                });
-                gsap.to(this.material.uniforms.mouseClickY, {
-                    duration: .5,
-                    delay: 0.2,
-                    ease: "SlowMo",
-                    value: intersection.point.z
-                });
-            } else {
-                gsap.to(this.material.uniforms.mouseClickX, {
-                    duration: .5,
-                    delay: 0.2,
-                    ease: "SlowMo",
-                    value: 0
-                });
-                gsap.to(this.material.uniforms.mouseClickY, {
-                    duration: .5,
-                    delay: 0.2,
-                    ease: "SlowMo",
-                    value: 0
-                });
-            }
-        });
+        window.addEventListener('mousemove', this.mouseMove.bind(this));
 
     }
     initScene(){
-        this.camera.position.set(270, 400, 0);
-        this.camera.position.set(0, 0, 10);
-        this.camera.lookAt(0, 0, 0);
-        this.camera.rotation.x = -Math.PI / 2;
-        this.camera.rotateZ(Math.PI);
+       console.log("initilzating scene");
     }
     resize() {
         this.canvasWidth = window.innerWidth;
@@ -106,17 +49,91 @@ export default class App {
             this.material.uniforms.pointMultiplier.value = window.innerHeight / ( Math.tan(0.5 * 60.0 * Math.PI / 180.0))
     }
     initParticles() {
-        this.particles = new Particles(2000, 1500, 4.5);
-        this.particleMesh = this.particles.getMesh();
-        this.particleMesh.material.map = this.particle;
-        this.scene.add(this.particleMesh);
+       console.log("initilzating textures")
+    }
+
+    updateScene() {
+        
+    }
+    render() {
+        this.time += 0.01;
+        this.updateScene();   
+        this.renderer.render(this.scene, this.camera);
+        smoothScroll();
+        requestAnimationFrame(this.render.bind(this));
+    }
+}
+
+export class AppHome extends AppBase{
+    constructor(canvas, shaders) {
+        super(canvas, shaders);
+        this.raycaster = new THREE.Raycaster();
+        this.pointMultiplier =  window.innerHeight / ( Math.tan(0.5 * 60.0 * Math.PI / 180.0));
+        this.clock = new THREE.Clock();
+        this.lastIntersection = 0;
+        this.rippleStart = 0;
+        this.initScene();
+        this.initTextures();
+        this.initParticles();
+        this.windowEvents();
+        this.addMesh();
+        super.render();
+    }
+    windowEvents() {
+        super.windowEvents();
+       
+    }
+    mouseMove(e) {
+        this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+            this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+            
+            this.raycaster.setFromCamera(this.mouse, this.camera);
+            let intersections = this.raycaster.intersectObjects([this.mesh], false);
+            let intersection = (intersections.length) > 0 ? intersections[0] : null;
+            
+            if (intersection !== null) {
+                this.lastIntersection = this.clock.getElapsedTime();
+                
+                gsap.to(this.material.uniforms.rippleInflunce, { duration: .5, value: 1. });
+                this.modifyMousePosition(intersection.point, .5);            
+            } else {
+                if(this.rippleStart == 0){
+                    this.modifyMousePosition(new THREE.Vector3(0, 0, 0), .5);
+                    gsap.to(this.material.uniforms.rippleInflunce, { duration: .5, value: 0. });
+                }
+            }
+    }
+    modifyMousePosition(point, duration) {
+        gsap.to(this.material.uniforms.mouseClickX, {
+            duration: duration,
+            delay: 0.2,
+            ease: "SlowMo",
+            value: point.x
+        });
+        gsap.to(this.material.uniforms.mouseClickY, {
+            duration: duration,
+            delay: 0.2,
+            ease: "SlowMo",
+            value: point.z
+        });
+    }
+    initScene(){
+        this.camera.position.set(270, 400, 0);
+        this.camera.position.set(0, 0, 10);
+        this.camera.lookAt(0, 0, 0);
+        this.camera.rotation.x = -Math.PI / 2;
+        this.camera.rotateZ(Math.PI);
     }
     initTextures() {
-        
         this.particle = new THREE.TextureLoader().load("./particle.png");
         this.texture = new THREE.TextureLoader().load("./texture.jpg");
         this.mask = new THREE.TextureLoader().load("./Mask.png");
-
+    }
+    initParticles(){
+        this.particles = new Particles(2000, 1500, 6.5);
+        this.particleMesh = this.particles.getMesh();
+        this.particleMesh.material.map = this.particle;
+        this.scene.add(this.particleMesh);
     }
     addMesh() {
         this.geometry = new THREE.BufferGeometry();
@@ -147,8 +164,6 @@ export default class App {
         });
         this.mesh = new THREE.Points(this.geometry, this.material);
         this.scene.add(this.mesh);
-        
-
     }
     setUpGeometryAttributes() {
         let number = 512;
@@ -173,9 +188,9 @@ export default class App {
         //this.material.uniforms.progress.value = window.scrollY/window.innerHeight;
 
         if (scroll / window.innerHeight < .5) {
-            gsap.to(this.camera.position, { duration: 2.5, x: 270, y: 400, z: 0 });
+            gsap.to(this.camera.position, { duration: 2.5, x: 270, y: 500, z: 0 });
             gsap.to(this.camera.rotation, { duration: 2.5, x: -Math.PI / 2, y: 0, z: Math.PI });
-            gsap.to(this.material.uniforms.rippleInflunce, { duration: .5, value: 0 });
+            this.randomRipples(3);
             this.pointMultiplier =  window.innerHeight / ( Math.tan(0.5 * 60.0 * Math.PI / 180.0));
             gsap.to(this.material.uniforms.pointMultiplier, { duration: 1.5, value: this.pointMultiplier });
             
@@ -185,7 +200,7 @@ export default class App {
             gsap.to(this.material.uniforms.progress, { duration: 2.5, value: 0 });
             gsap.to(this.material.uniforms.rippleInflunce, { duration: .5, value: 1 });
             gsap.to(this.camera.rotation, { duration: 2.5, x: -Math.PI / 6 , y: -Math.PI / 10, z: 0 });
-            this.pointMultiplier = 300;
+            this.pointMultiplier = window.innerHeight / 2* ( Math.tan(0.5 * 60.0 * Math.PI / 180.0));;
             gsap.to(this.material.uniforms.pointMultiplier, { duration: 1.5, value: this.pointMultiplier });
         }
         if (scroll/ window.innerHeight >= 1.5) {
@@ -195,13 +210,34 @@ export default class App {
             
         }
     }
-    render() {
-        this.time += 0.01;
+    randomRipples(interval) {
+        if(Math.abs(this.clock.getElapsedTime() - this.lastIntersection) > interval){
+            //Do random ripple
+            if(this.rippleStart == 0){
+                this.rippleStart =  this.clock.getElapsedTime();
+                let x = randomInterval(-250, 250);
+                let y = randomInterval(-250, 250);
+                let point = new THREE.Vector3(x, y, 0);
+                gsap.to(this.material.uniforms.rippleInflunce, { duration: .5, value: 1. });
+                this.modifyMousePosition(point, 1);
+            }
+            if(Math.abs(this.clock.getElapsedTime() - this.rippleStart) > 1){
+                this.lastIntersection = this.clock.getElapsedTime();
+                this.rippleStart = 0;
+                gsap.to(this.material.uniforms.rippleInflunce, { duration: .5, value: 0. });
+            }
+        }
+    }
+    updateScene() {
+        this.updateUniforms();
+        
         this.particleMesh.rotation.y += 0.001;
         this.particleMesh.rotation.z += 0.001;
-        this.updateUniforms();
-        this.renderer.render(this.scene, this.camera);
-        smoothScroll();
-        requestAnimationFrame(this.render.bind(this));
+        
     }
+}
+
+
+function randomInterval(min, max){
+    return Math.random() * (max - min + 1) + min;
 }

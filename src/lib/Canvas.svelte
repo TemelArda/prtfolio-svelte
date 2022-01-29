@@ -1,9 +1,10 @@
 <script>
 	import { onMount } from 'svelte';
-    import App from "../WebGL.js";
-    import load from "load-asset";
+    import {AppHome, AppBase} from "../App.js";
+    export let pageName;
 	let CanvasElement;
 	
+    console.log(pageName)
     async function getShaders(){
         let resp = await fetch("./shaders/vertex.glsl")
         let vertexShader = await resp.text()
@@ -19,7 +20,7 @@
         
         
         let shaders = await getShaders();
-        new App(CanvasElement, shaders);
+        new AppHome(CanvasElement, shaders);
 
 	});
 </script>
