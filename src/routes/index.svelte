@@ -8,25 +8,24 @@
 
 	export let experience = [
 		{
-			Title: "Creatvie Developer Intern",
-			Company: "BMS Labs",
-			Location: "Netherlands, Enschede",
-			Dates: "Sept 2020 - Sept 2021",
+			Title: 'Creatvie Developer Intern',
+			Company: 'BMS Labs',
+			Location: 'Netherlands, Enschede',
+			Dates: 'Sept 2020 - Sept 2021'
 		},
 		{
-			Title: "Software Developer Intern",
-			Company: "Ravico Analytics",
-			Location: "Toronto, Ontario",
-			Dates: "May 2020 - Sept 2020",
+			Title: 'Software Developer Intern',
+			Company: 'Ravico Analytics',
+			Location: 'Toronto, Ontario',
+			Dates: 'May 2020 - Sept 2020'
 		},
 		{
-			Title: "Peer Advisor",
-			Company: "Lassonde school of engineering", 
-			Location: "Toronto, Ontario",
-			Dates: "May 2020 - Sept 2020",
+			Title: 'Peer Advisor',
+			Company: 'Lassonde school of engineering',
+			Location: 'Toronto, Ontario',
+			Dates: 'May 2020 - Sept 2020'
 		}
-
-	]
+	];
 	let Container;
 </script>
 
@@ -97,18 +96,57 @@
 				<hr />
 				<div class="experience-content">
 					{#each experience as e, i}
-					<div class="experience-card">
-						<h3 class="h3">{e.Title}</h3>
-						<hr>
-						<div class="experience-info">
-							<h4 class="h4">{e.Company}</h4>
-							<p>{e.Location}</p>
+						<div class="experience-card">
+							<h3 class="h3">{e.Title}</h3>
+							<hr />
+							<div class="experience-info">
+								<h4 class="h4">{e.Company}</h4>
+								<p>{e.Location}</p>
+							</div>
+							<p class="date">{e.Dates}</p>
+							<ul>
+								<li><p>Math and Stats chair Honor roll</p></li>
+							</ul>
 						</div>
-						<p class="date">{e.Dates}</p>
-						<ul>
-							<li><p>Math and Stats chair Honor roll</p></li>
-						</ul>
-					</div>
+					{/each}
+				</div>
+			</div>
+		</div>
+		<div class=" grid about">
+			<div class="display-container">
+				<h1 class="display">AB<br />OUT</h1>
+			</div>
+			<div class="education-container">
+				<h2 class="h2">Education</h2>
+				<hr />
+				<h3 class="h3">Bachelor of Computer Science</h3>
+				<div class="info">
+					<h4 class="h4">York University</h4>
+					<p>Toronto, ON</p>
+					<p>2019 - Ongoing</p>
+					<p><b>GPA:</b> 3.8/4.0</p>
+				</div>
+				<ul>
+					<li><p>Math and Stats chair Honor roll</p></li>
+				</ul>
+			</div>
+			<div class="experience-container">
+				<h2 class="h2">Experience</h2>
+				<hr />
+				<div class="experience-content">
+					{#each experience as e, i}
+						<div class="experience-card">
+							<h3 class="h3">{e.Title}</h3>
+							<hr />
+							<div class="experience-info">
+								<h4 class="h4">{e.Company}</h4>
+								<p>{e.Location}</p>
+							</div>
+							<p class="date">{e.Dates}</p>
+							<ul>
+								<li><p>Math and Stats chair Honor roll</p></li>
+							</ul>
+						</div>
 					{/each}
 				</div>
 			</div>
@@ -124,6 +162,9 @@
 		width: 100%;
 		height: fit-content;
 		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 		p {
 			font-family: $secondaryFont;
 			font-size: $fontR1;
@@ -134,9 +175,10 @@
 		}
 	}
 	.grid {
+		margin: auto;
 		height: 100vh;
 		display: grid;
-		grid-template-columns: repeat(6, minmax(240px, 1fr));
+		grid-template-columns: repeat(6, minmax(200px, 350px));
 		grid-gap: 1rem;
 		align-items: center;
 		.grid-item {
@@ -377,8 +419,9 @@
 			display: flex;
 			justify-content: space-around;
 			align-items: center;
+			flex-wrap: wrap;
 		}
-		.h4{
+		.h4 {
 			color: white;
 			font-family: $primaryFont;
 			font-weight: 400;
@@ -388,7 +431,7 @@
 			margin-top: 4px;
 			padding: 0;
 		}
-		.h3{
+		.h3 {
 			color: white;
 			font-family: $primaryFont;
 			font-weight: 400;
@@ -398,27 +441,33 @@
 			margin-top: 4px;
 			padding: 0;
 		}
-		.experience-card{
+		.experience-card {
 			margin: 1rem;
-			background: rgb(255,255,255);
-			background: radial-gradient(circle, rgba(255,255,255,0.5) 23%, rgba(103,191,178,0.5) 65%, rgba(57,195,128,1) 100%);
-			border: rgba(57,195,128,1) solid 1px;;  
+			background: rgb(255, 255, 255);
+			background: radial-gradient(
+				circle,
+				rgba(255, 255, 255, 0.5) 23%,
+				rgba(103, 191, 178, 0.5) 65%,
+				rgba(57, 195, 128, 1) 100%
+			);
+			border: rgba(57, 195, 128, 1) solid 1px;
 			border-radius: 5px;
 			padding: 1rem;
-			box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2), 0px 6px 10px rgba(0, 0, 0, 0.14), 0px 1px 18px rgba(0, 0, 0, 0.12);
-			&:hover{
+			box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2), 0px 6px 10px rgba(0, 0, 0, 0.14),
+				0px 1px 18px rgba(0, 0, 0, 0.12);
+			&:hover {
 				transform: translateY(-5px);
 			}
 			transition: all 0.3s ease-in-out;
 		}
-		.experience-info{
+		.experience-info {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
 			flex-wrap: wrap;
 			color: $bgColor;
 		}
-		p{
+		p {
 			color: white;
 			font-family: $secondaryFont;
 			font-weight: 400;
@@ -426,8 +475,90 @@
 			margin-top: 4px;
 			padding: 0;
 		}
-		.date{
+		.date {
 			text-align: end;
+		}
+	}
+	@media (max-width: 767.98px) {
+		
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(190px, 1fr));
+			gap: 0.5rem;
+			align-items: end;
+			.grid-item {
+				grid-column: span 4/5;
+				display: flex;
+				flex-direction: column;
+				padding: 8px;
+				.h1{
+					font-size: $font2L;
+				}
+				.h2{
+					font-size: $fontL;
+				}
+				.p{
+					font-size: $fontR1;
+					width: 100%;
+					margin: .5rem 0;
+				}
+				.button{
+					align-self: center;
+					justify-self: center;
+					margin: 1rem 0 0 0;
+				}
+			}
+		}
+		.scroll-down {
+			order: 2;
+			grid-column: span 4/5;
+			grid-row: 2 / span 1;
+			.text {
+				display: flex;
+				li {
+					margin: 0 0.75rem;
+				}
+			}
+		}
+		.about{
+			grid-template-rows: 0.25fr .5fr 1fr;
+		}
+		.experience-container{
+			grid-column : span 3/3;
+			grid-row: span 1/4;
+			.experience-content{
+				justify-content: center;
+				
+			}
+		}
+		.education-container{
+			grid-column: span 3/3;
+			grid-row: span 1/3;
+			padding: 24px;
+			align-self: flex-start;
+			.h3{
+				font-size: $fontL;
+			}
+			.info{
+				flex-wrap: wrap;
+				justify-content: space-around;
+			}
+			.h4{
+				font-size: $fontR1 !important;
+			}
+		}
+		.display-container{
+			grid-column : span 3/3;
+			width: 90%;
+			height: fit-content;
+			margin: 8px;
+			justify-self: center;
+			.display{
+				font-size: $font5L;
+			}
+			br{
+				display: none;
+			}
 		}
 	}
 	@-webkit-keyframes moveDown {

@@ -85,23 +85,23 @@ export class AppHome extends AppBase{
     }
     mouseMove(e) {
         this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-            this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
-            
-            this.raycaster.setFromCamera(this.mouse, this.camera);
-            let intersections = this.raycaster.intersectObjects([this.mesh], false);
-            let intersection = (intersections.length) > 0 ? intersections[0] : null;
-            
-            if (intersection !== null) {
-                this.lastIntersection = this.clock.getElapsedTime();
-                
-                gsap.to(this.material.uniforms.rippleInflunce, { duration: .5, value: 1. });
-                this.modifyMousePosition(intersection.point, .5);            
-            } else {
-                if(this.rippleStart == 0){
-                    this.modifyMousePosition(new THREE.Vector3(0, 0, 0), .5);
-                    gsap.to(this.material.uniforms.rippleInflunce, { duration: .5, value: 0. });
-                }
+        this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+
+        this.raycaster.setFromCamera(this.mouse, this.camera);
+        let intersections = this.raycaster.intersectObjects([this.mesh], false);
+        let intersection = (intersections.length) > 0 ? intersections[0] : null;
+
+        if (intersection !== null) {
+            this.lastIntersection = this.clock.getElapsedTime();
+
+            gsap.to(this.material.uniforms.rippleInflunce, { duration: .5, value: 1. });
+            this.modifyMousePosition(intersection.point, .5);
+        } else {
+            if (this.rippleStart == 0) {
+                this.modifyMousePosition(new THREE.Vector3(0, 0, 0), .5);
+                gsap.to(this.material.uniforms.rippleInflunce, { duration: .5, value: 0. });
             }
+        }
     }
     modifyMousePosition(point, duration) {
         gsap.to(this.material.uniforms.mouseClickX, {
@@ -183,7 +183,7 @@ export class AppHome extends AppBase{
     }
     updateUniforms() {
         let scroll = window.scrollY * 2
-        this.material.uniforms.texture_influence.value = .86 - scroll / window.innerHeight;
+        this.material.uniforms.texture_influence.value = 1 - scroll / window.innerHeight;
         this.material.uniforms.u_time.value = this.time;
         //this.material.uniforms.progress.value = window.scrollY/window.innerHeight;
 
@@ -196,16 +196,18 @@ export class AppHome extends AppBase{
             
         }
         if (scroll / window.innerHeight >= .5 && window.scrollY / window.innerHeight < 1.5) {
-            gsap.to(this.camera.position, { duration: 2.5, x: 0, y: 250, z: 450 });
+            gsap.to(this.camera.position, { duration: 2.5, x: 200, y: 200, z: 370 });
             gsap.to(this.material.uniforms.progress, { duration: 2.5, value: 0 });
             gsap.to(this.material.uniforms.rippleInflunce, { duration: .5, value: 1 });
-            gsap.to(this.camera.rotation, { duration: 2.5, x: -Math.PI / 6 , y: -Math.PI / 10, z: 0 });
-            this.pointMultiplier = window.innerHeight / 2* ( Math.tan(0.5 * 60.0 * Math.PI / 180.0));;
+            gsap.to(this.camera.rotation, { duration: 2.5, x: -Math.PI / 6 , y: Math.PI / 12 , z: 0 });
+            this.pointMultiplier = window.innerHeight / 1.5 * ( Math.tan(0.5 * 60.0 * Math.PI / 180.0));;
             gsap.to(this.material.uniforms.pointMultiplier, { duration: 1.5, value: this.pointMultiplier });
         }
         if (scroll/ window.innerHeight >= 1.5) {
+            console.log(this.material.uniforms.progress.value);
+            
             gsap.to(this.camera.position, { duration: 2.5, x: 0, y: 250, z: 700 });
-            gsap.to(this.material.uniforms.progress, { duration: 1.5, value: 1.2 });
+            gsap.to(this.material.uniforms.progress, { duration: 3.1, value: 1.4 });
             gsap.to(this.camera.rotation, { duration: 2.5, x: -Math.PI / 8, y: Math.PI / 8, z: 0 });
             
         }

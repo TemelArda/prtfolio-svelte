@@ -16,9 +16,12 @@
 		flex-direction: column;
 		padding: 1rem;
 		width: 100%;
-		max-width: 1024px;
-
 		box-sizing: border-box;
+	}
+	@media (max-width: 767.98px){
+		main {
+			padding: 0;
+		}
 	}
 
 </style>
