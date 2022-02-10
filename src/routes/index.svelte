@@ -11,19 +11,31 @@
 			Title: 'Creatvie Developer Intern',
 			Company: 'BMS Labs',
 			Location: 'Netherlands, Enschede',
-			Dates: 'Sept 2020 - Sept 2021'
+			Dates: 'Sept 2020 - Sept 2021',
+			src:"./BMS.png",
+			alt:"BMS Labs Logo",
+			description:"The BMS lab provides a wide range of technical services for application development.",
+			link:"https://bmslab.utwente.nl/"
 		},
 		{
 			Title: 'Software Developer Intern',
 			Company: 'Ravico Analytics',
 			Location: 'Toronto, Ontario',
-			Dates: 'May 2020 - Sept 2020'
+			Dates: 'May 2020 - Sept 2020',
+			src:"./Ravico.png",
+			alt:"Ravico Analytics Logo",
+			description:"Laboratory Informatics planning systems.",
+			link:"https://www.linkedin.com/company/ravico-analytics/"
 		},
 		{
 			Title: 'Peer Advisor',
 			Company: 'Lassonde school of engineering',
 			Location: 'Toronto, Ontario',
-			Dates: 'May 2020 - Sept 2020'
+			Dates: 'May 2020 - Sept 2020',
+			src:"./Lassonde.png",
+			alt:"Lassonde Logo",
+			description:"The Lassonde School of Engineering is a professional engineering school of York University located in Toronto, Ontario, Canada.",
+			link:"https://lassonde.yorku.ca/"
 		}
 	];
 	let Container;
@@ -57,16 +69,14 @@
 				<h2 class="h2">Developer | Student | Problem Solver</h2>
 				<hr class="line" />
 				<p class="p">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-					ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-					ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-					reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-					sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-					est laborum.
+					Welcome to my portfolio! Currently I am studying Computer Science at York University in
+					Toronto, Canada. This portfolio is a place where I showcase my personal, course and
+					profesional projects. I am gald that you are here and I hope you will enjoy my portfolio.
+					Click on the links to get in touch with me or hover over the image for some rippless!!
 				</p>
 
 				<div class="button">
-					<a href="/">
+					<a href="./resume.pdf" target="_blank">
 						Resume
 						<i class="far fa-arrow-alt-circle-down" />
 					</a>
@@ -80,6 +90,11 @@
 			<div class="education-container">
 				<h2 class="h2">Education</h2>
 				<hr />
+				<img
+					class="image"
+					src="https://sciencesprings.files.wordpress.com/2019/09/york-university-toronto-logo.png?w=200"
+					alt="York University Logo"
+				/>
 				<h3 class="h3">Bachelor of Computer Science</h3>
 				<div class="info">
 					<h4 class="h4">York University</h4>
@@ -97,6 +112,11 @@
 				<div class="experience-content">
 					{#each experience as e, i}
 						<div class="experience-card">
+							<img
+								class="image"
+								src = "{e.src}"
+								alt="{e.alt}"
+							/>
 							<h3 class="h3">{e.Title}</h3>
 							<hr />
 							<div class="experience-info">
@@ -104,9 +124,10 @@
 								<p>{e.Location}</p>
 							</div>
 							<p class="date">{e.Dates}</p>
-							<ul>
-								<li><p>Math and Stats chair Honor roll</p></li>
-							</ul>
+							<div class="description">
+								<p class="description">{e.description}</p>
+							</div>
+							<div class="link"><a href="{e.link}" target="_blank"><i class="fas fa-link"></i></a></div>
 						</div>
 					{/each}
 				</div>
@@ -406,6 +427,11 @@
 		padding: 8px;
 		margin: 0;
 		align-self: center;
+		display: flex;
+		flex-direction: column;
+		hr {
+			width: 100%;
+		}
 	}
 	.experience-container {
 		grid-column: span 6/7;
@@ -427,8 +453,7 @@
 			font-weight: 400;
 			font-style: normal;
 			font-size: $fontL;
-			margin: 0;
-			margin-top: 4px;
+			margin: 4px 8px;
 			padding: 0;
 		}
 		.h3 {
@@ -437,8 +462,7 @@
 			font-weight: 400;
 			font-style: normal;
 			font-size: $fontXL;
-			margin: 0;
-			margin-top: 4px;
+			margin: 4px 8px;
 			padding: 0;
 		}
 		.experience-card {
@@ -455,10 +479,17 @@
 			padding: 1rem;
 			box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2), 0px 6px 10px rgba(0, 0, 0, 0.14),
 				0px 1px 18px rgba(0, 0, 0, 0.12);
+			display: flex;
+			flex-direction: column;
+			max-width: 450px;
 			&:hover {
 				transform: translateY(-5px);
 			}
 			transition: all 0.3s ease-in-out;
+			hr{
+				width: 100%;
+				border-color: white;
+			}
 		}
 		.experience-info {
 			display: flex;
@@ -478,9 +509,31 @@
 		.date {
 			text-align: end;
 		}
+		.description{
+			margin: 0;
+			padding: 0;
+			width: 100%;
+		}
+		.link{
+			align-self: flex-end;
+			opacity: .83;
+			cursor: pointer;
+			background: black;
+			padding: 8px;
+			margin: 0;
+			clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+			a{
+				color: greenyellow;
+			}
+		}
+	}
+	.image {
+		width: 20%;
+		height: auto;
+		align-self: center;
+		margin: 4px 0;
 	}
 	@media (max-width: 767.98px) {
-		
 		.grid {
 			display: grid;
 			grid-template-columns: repeat(2, minmax(190px, 1fr));
@@ -491,18 +544,18 @@
 				display: flex;
 				flex-direction: column;
 				padding: 8px;
-				.h1{
+				.h1 {
 					font-size: $font2L;
 				}
-				.h2{
+				.h2 {
 					font-size: $fontL;
 				}
-				.p{
+				.p {
 					font-size: $fontR1;
 					width: 100%;
-					margin: .5rem 0;
+					margin: 0.5rem 0;
 				}
-				.button{
+				.button {
 					align-self: center;
 					justify-self: center;
 					margin: 1rem 0 0 0;
@@ -520,43 +573,42 @@
 				}
 			}
 		}
-		.about{
-			grid-template-rows: 0.25fr .5fr 1fr;
+		.about {
+			grid-template-rows: 0.25fr 0.5fr 1fr;
 		}
-		.experience-container{
-			grid-column : span 3/3;
+		.experience-container {
+			grid-column: span 3/3;
 			grid-row: span 1/4;
-			.experience-content{
+			.experience-content {
 				justify-content: center;
-				
 			}
 		}
-		.education-container{
+		.education-container {
 			grid-column: span 3/3;
 			grid-row: span 1/3;
 			padding: 24px;
 			align-self: flex-start;
-			.h3{
+			.h3 {
 				font-size: $fontL;
 			}
-			.info{
+			.info {
 				flex-wrap: wrap;
 				justify-content: space-around;
 			}
-			.h4{
+			.h4 {
 				font-size: $fontR1 !important;
 			}
 		}
-		.display-container{
-			grid-column : span 3/3;
+		.display-container {
+			grid-column: span 3/3;
 			width: 90%;
 			height: fit-content;
 			margin: 8px;
 			justify-self: center;
-			.display{
+			.display {
 				font-size: $font5L;
 			}
-			br{
+			br {
 				display: none;
 			}
 		}
