@@ -5,7 +5,7 @@
 
 <script>
 	import Canvas from '$lib/Canvas.svelte';
-
+	import Socials	from '$lib/Socials.svelte';
 	export let experience = [
 		{
 			Title: 'Creatvie Developer Intern',
@@ -74,7 +74,7 @@
 					profesional projects. I am gald that you are here and I hope you will enjoy my portfolio.
 					Click on the links to get in touch with me or hover over the image for some rippless!!
 				</p>
-
+				<Socials isMoved="no"/>
 				<div class="button">
 					<a href="./resume.pdf" target="_blank">
 						Resume

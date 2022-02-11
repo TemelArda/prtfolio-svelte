@@ -5,11 +5,11 @@
 	
 	function openNavBar() {
 		gsap.to('.Nav-Bar', { width: '100%', duration: 0.75, ease: 'power2.inOut' });
-		gsap.to('.socials', { x: 0, duration: 1, delay: 0.35, ease: 'back.out(1.7)' });
+		gsap.to('.move', { x: 0, duration: 1, delay: 0.35, ease: 'back.out(1.7)' });
 	}
 	const closeNavBar = () => {
 		gsap.to('.Nav-Bar', { width: '0%', duration: 0.45, delay: 0.25, ease: 'power2.inOut' });
-		gsap.to('.socials', { x: 1200, duration: 0.55 });
+		gsap.to('.move', { x: 1200, duration: 0.55 });
 	};
 	onMount(async () => {
 		gsap.set('.Nav-Bar', { width: '0%' });
@@ -52,7 +52,7 @@
 					</li>
 				</ul>
 			</nav>
-			<Socials />
+			<Socials isMoved = "move"/>
 		</div>
 	</div>
 	<div class = "code-container">
