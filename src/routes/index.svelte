@@ -5,7 +5,7 @@
 
 <script>
 	import Canvas from '$lib/Canvas.svelte';
-	import Socials	from '$lib/Socials.svelte';
+	import Socials	from '$lib/socials.svelte';
 	export let experience = [
 		{
 			Title: 'Creatvie Developer Intern',
