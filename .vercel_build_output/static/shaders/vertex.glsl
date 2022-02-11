@@ -19,9 +19,9 @@ vec3 Wave(float x, float z){
 
 vec3 MultiWave(float x, float z){
     vec3 pos = vec3(x, 0.0, z);
-    pos.y = sin( (pos.x  + pos.z )* 0.01 + u_time ) * 100.0;
-    pos.y += sin(  pos.x * 0.09 + u_time ) * 10.0;
-    pos.y += sin(  pos.z * 0.01 + u_time ) * 5.0;
+    pos.y = sin( (pos.x  + pos.z )* 0.009 + u_time ) * 50.0;
+    pos.y += sin(  pos.x * 0.05 + u_time * 3.) * 12.0;
+    pos.y += sin(  pos.z * 0.09 + u_time * 4.) * 10.0;
     return pos;
 }
 
@@ -59,9 +59,9 @@ vec3 fromRippleToSphere(float x, float z){
 
 void main(){
     vec3 pos = mix(position, fromRippleToSphere(position.x, position.z), rippleInflunce);;
-    
-    //pos = mix(MultiWave(position.x, position.z), pos, .65);
+    pos = mix(MultiWave(position.x, position.z), pos, .8);
     //vec3 pos = Sphere(position.x, position.z);
+     
     vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
     gl_PointSize = pointMultiplier * (1./ -mvPosition.z);
     gl_Position = projectionMatrix * mvPosition;

@@ -1,0 +1,1 @@
+import{S as e,i as t,s as o}from"../chunks/vendor-dbc50589.js";const n=!0,r=!1,l=r,u=n,d=!0;class f extends e{constructor(s){super();t(this,s,null,null,o,{})}}export{f as default,l as hydrate,d as prerender,u as router};

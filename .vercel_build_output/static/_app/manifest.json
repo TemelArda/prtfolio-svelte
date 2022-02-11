@@ -1,28 +1,29 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-d488b064.js",
+    "file": "start-e3f4e15a.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
-      "_vendor-d9c15a64.js"
+      "_vendor-dbc50589.js"
     ],
     "dynamicImports": [
       "src/routes/__layout.svelte",
       ".svelte-kit/runtime/components/error.svelte",
       "src/routes/index.svelte",
+      "src/routes/projects/index.svelte",
       "src/routes/about.svelte"
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-389eb652.js",
+    "file": "pages/__layout.svelte-7743d521.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-d9c15a64.js"
+      "_vendor-dbc50589.js"
     ],
     "css": [
-      "assets/pages/__layout.svelte-5895f7d5.css"
+      "assets/pages/__layout.svelte-dc100726.css"
     ],
     "assets": [
       "assets/fira-mono-cyrillic-ext-400-normal-b3140dd3.woff2",
@@ -35,36 +36,48 @@
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
-    "file": "error.svelte-42180317.js",
+    "file": "error.svelte-bad07b0e.js",
     "src": ".svelte-kit/runtime/components/error.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-d9c15a64.js"
+      "_vendor-dbc50589.js"
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-a292e4e9.js",
+    "file": "pages/index.svelte-b588f4d2.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-d9c15a64.js"
+      "_vendor-dbc50589.js"
     ],
     "css": [
-      "assets/pages/index.svelte-d8c55ddb.css"
+      "assets/pages/index.svelte-1bb4b82c.css"
+    ]
+  },
+  "src/routes/projects/index.svelte": {
+    "file": "pages/projects/index.svelte-890198c3.js",
+    "src": "src/routes/projects/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor-dbc50589.js"
+    ],
+    "css": [
+      "assets/pages/projects/index.svelte-5a3f116b.css"
     ]
   },
   "src/routes/about.svelte": {
-    "file": "pages/about.svelte-ea93b46b.js",
+    "file": "pages/about.svelte-36ed9c32.js",
     "src": "src/routes/about.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_vendor-d9c15a64.js"
+      "_vendor-dbc50589.js"
     ]
   },
-  "_vendor-d9c15a64.js": {
-    "file": "chunks/vendor-d9c15a64.js"
+  "_vendor-dbc50589.js": {
+    "file": "chunks/vendor-dbc50589.js"
   }
 }
