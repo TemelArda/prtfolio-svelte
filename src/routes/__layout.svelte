@@ -1,5 +1,6 @@
 <script>
 	import Header from '$lib/header/Header.svelte';
+	import Footer from '$lib/footer.svelte';
 	import '../app.scss';
 	
 </script>
@@ -9,6 +10,7 @@
 	<slot />
 </main>
 
+
 <style>
 	main {
 		flex: 1;
@@ -16,6 +18,7 @@
 		flex-direction: column;
 		padding: 1rem;
 		width: 100%;
+		height: fit-content;
 		box-sizing: border-box;
 	}
 	@media (max-width: 767.98px){

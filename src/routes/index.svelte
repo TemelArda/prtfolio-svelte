@@ -6,13 +6,14 @@
 <script>
 	import Canvas from '$lib/Canvas.svelte';
 	import Socials	from '$lib/socials.svelte';
+	import ProjectCard from '$lib/ProjectCard.svelte';
 	export let experience = [
 		{
 			Title: 'Creatvie Developer Intern',
 			Company: 'BMS Labs',
 			Location: 'Netherlands, Enschede',
 			Dates: 'Sept 2020 - Sept 2021',
-			src:"./BMS.png",
+			src:"./BMS.jpg",
 			alt:"BMS Labs Logo",
 			description:"The BMS lab provides a wide range of technical services for application development.",
 			link:"https://bmslab.utwente.nl/"
@@ -71,7 +72,8 @@
 				<p class="p">
 					Welcome to my portfolio! Currently I am studying Computer Science at York University in
 					Toronto, Canada. This portfolio is a place where I showcase my personal, course and
-					profesional projects. I am gald that you are here and I hope you will enjoy my portfolio.
+					profesional projects. I don't know how but I am glad you ended up here!!
+					So let's get going. <br/>
 					Click on the links to get in touch with me or hover over the image for some rippless!!
 				</p>
 				<Socials isMoved="no"/>
@@ -133,42 +135,50 @@
 				</div>
 			</div>
 		</div>
-		<div class=" grid about">
-			<div class="display-container">
-				<h1 class="display">AB<br />OUT</h1>
-			</div>
-			<div class="education-container">
-				<h2 class="h2">Education</h2>
-				<hr />
-				<h3 class="h3">Bachelor of Computer Science</h3>
-				<div class="info">
-					<h4 class="h4">York University</h4>
-					<p>Toronto, ON</p>
-					<p>2019 - Ongoing</p>
-					<p><b>GPA:</b> 3.8/4.0</p>
+		<div class="grid">
+			<div class="grid-container">
+				<h1>Projects</h1>
+				<div class="project-content">
+					<ProjectCard 
+					title = "Ray Tracer" 
+					subTitle="C++ Ray reacer - Course Project for Computer Graphics" 
+					imageOrder = 2
+					description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.">
+					</ProjectCard>
+					<ProjectCard 
+					title = "Ray Tracer" 
+					subTitle="C++ Ray reacer - Course Project for Computer Graphics" 
+					imageOrder = 1
+					description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.">
+					</ProjectCard>
 				</div>
-				<ul>
-					<li><p>Math and Stats chair Honor roll</p></li>
-				</ul>
+				<div class="button">
+					<a href="./resume.pdf" target="_blank">
+						See All Projects
+						<i class="fa-solid fa-chevrons-right"></i>
+					</a>
+				</div>
 			</div>
-			<div class="experience-container">
-				<h2 class="h2">Experience</h2>
-				<hr />
-				<div class="experience-content">
-					{#each experience as e, i}
-						<div class="experience-card">
-							<h3 class="h3">{e.Title}</h3>
-							<hr />
-							<div class="experience-info">
-								<h4 class="h4">{e.Company}</h4>
-								<p>{e.Location}</p>
-							</div>
-							<p class="date">{e.Dates}</p>
-							<ul>
-								<li><p>Math and Stats chair Honor roll</p></li>
-							</ul>
-						</div>
-					{/each}
+			<div class="grid-container">
+				<div class="contact-content">
+					<div class="contact-header">
+						<p>Contact</p>
+						<h1>Get In Touch</h1>
+					</div>
+					<div class="contact-body">
+						<p> Currently I am looking for summer/fall internships!
+							If you are interested in working with me, please feel free to contact me.
+							My inbox is always open and I will respond to your message as soon as possible.
+						</p>
+					</div>
+					<div class="button">
+						<a href="mailto:arda.temel98@gmail.com">
+							Say Hi!
+							<i class="fa-solid fa-chevrons-right"></i>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -178,6 +188,64 @@
 </section>
 
 <style lang="scss">
+	.contact-content{
+		width: 75%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin: 25vh 0;
+		.contact-header{
+			width: 100%;
+			h1{
+				width: 100%;
+				opacity: .83;
+				font-size: $font6L;
+			}
+			p{
+				text-align: center;
+				opacity: .83;
+				font-weight: bold;
+				font-size: $fontL;
+				color: rgba(68, 247, 208, 0.733);
+				margin: 0;
+			}
+		}
+		.contact-body{
+			width:40%;
+			text-align: center;
+			padding: 2rem;
+			p{
+				font-size: $fontR1;
+				opacity: .83;
+				margin: 0;
+			}
+		}
+		.button{
+			align-self: center;
+			border-radius: 0;
+		}
+	}
+	.grid-container{
+		grid-column: 1/ span 6;
+		padding: 1rem;
+		display: flex;
+		align-items: center;
+		justify-items: center;
+		flex-direction: column;
+		h1{
+			margin:0;
+			width: 50%;
+			text-align: center;
+		}
+		.button{
+			margin: 0; 
+			align-self: center;
+		}
+	}
+	.project-content{
+			width: 75%;
+	}
 	.container {
 		position: absolute;
 		width: 100%;
@@ -194,10 +262,16 @@
 			line-height: 1.25;
 			opacity: 0.83;
 		}
+		h1{
+			color: #fff;
+			opacity: .83;
+			font-family: $primaryFont;
+			font-size: $font3L;
+		}
 	}
 	.grid {
 		margin: auto;
-		height: 100vh;
+		min-height: 100vh;
 		display: grid;
 		grid-template-columns: repeat(6, minmax(200px, 350px));
 		grid-gap: 1rem;
@@ -232,6 +306,7 @@
 				width: 100%;
 				margin: 1rem 0;
 				max-width: 900px;
+				opacity: .83;
 			}
 			.p {
 				margin: 1rem 0;
@@ -241,7 +316,44 @@
 				max-width: 600px;
 				line-height: 1.6;
 			}
-			.button {
+		}
+		.scroll-down {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			&:hover a {
+				animation: moveDown 1s forwards infinite;
+				-webkit-animation: moveDown 1s forwards infinite;
+				-moz-animation: moveDown 1s forwards infinite;
+			}
+			&:hover .text {
+				transform: translateY(7px);
+				opacity: 1;
+			}
+			a {
+				text-decoration: none;
+				color: #fff;
+				font-size: $fontL;
+				margin-bottom: 10px;
+				margin-top: 10px;
+				opacity: 0.5;
+			}
+			.text {
+				list-style: none;
+				text-transform: uppercase;
+				text-align: center;
+				margin: 0;
+				padding: 0;
+				color: white;
+				font-size: $fontR1;
+				font-family: $altFont;
+				font-weight: 500;
+				opacity: 0.75;
+				transition: all 0.3s ease-in-out;
+			}
+		}
+	}
+	.button {
 				position: relative;
 				margin-top: 1rem;
 				margin-right: 5rem;
@@ -254,7 +366,6 @@
 				justify-content: center;
 				align-items: center;
 				padding: 0;
-				border-radius: 0 15px 0 15px;
 				box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2), 0px 4px 5px rgba(0, 0, 0, 0.14),
 					0px 1px 10px rgba(0, 0, 0, 0.12);
 				background-color: rgba(255, 255, 255, 0.1);
@@ -303,43 +414,6 @@
 					transition: all 0.45s ease-out;
 				}
 			}
-		}
-		.scroll-down {
-			display: flex;
-			align-items: center;
-			flex-direction: column;
-			&:hover a {
-				animation: moveDown 1s forwards infinite;
-				-webkit-animation: moveDown 1s forwards infinite;
-				-moz-animation: moveDown 1s forwards infinite;
-			}
-			&:hover .text {
-				transform: translateY(7px);
-				opacity: 1;
-			}
-			a {
-				text-decoration: none;
-				color: #fff;
-				font-size: $fontL;
-				margin-bottom: 10px;
-				margin-top: 10px;
-				opacity: 0.5;
-			}
-			.text {
-				list-style: none;
-				text-transform: uppercase;
-				text-align: center;
-				margin: 0;
-				padding: 0;
-				color: white;
-				font-size: $fontR1;
-				font-family: $altFont;
-				font-weight: 500;
-				opacity: 0.75;
-				transition: all 0.3s ease-in-out;
-			}
-		}
-	}
 	.about {
 		p {
 			font-family: $secondaryFont;
@@ -470,12 +544,12 @@
 			background: rgb(255, 255, 255);
 			background: radial-gradient(
 				circle,
-				rgba(255, 255, 255, 0.5) 23%,
+				rgba(42, 95, 87, 0.5) 23%,
 				rgba(103, 191, 178, 0.5) 65%,
 				rgba(57, 195, 128, 1) 100%
 			);
 			border: rgba(57, 195, 128, 1) solid 1px;
-			border-radius: 5px;
+			
 			padding: 1rem;
 			box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2), 0px 6px 10px rgba(0, 0, 0, 0.14),
 				0px 1px 18px rgba(0, 0, 0, 0.12);
@@ -518,12 +592,13 @@
 			align-self: flex-end;
 			opacity: .83;
 			cursor: pointer;
-			background: black;
+			background: $bgColor;
 			padding: 8px;
 			margin: 0;
 			clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
 			a{
-				color: greenyellow;
+				color: rgb(68, 247, 160);
+				opacity: 0.8;
 			}
 		}
 	}

@@ -94,7 +94,7 @@
 		display: block;
 		position: fixed;
 		top: 0;
-		right: 250px;
+		right: 100px;
 		margin-top: 4rem;
 		width: 2rem;
 		height: auto;
