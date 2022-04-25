@@ -33,6 +33,7 @@ export class AppBase {
         //Responsive Canvas
         window.addEventListener('resize', this.resize.bind(this));
         window.addEventListener('mousemove', this.mouseMove.bind(this));
+        //window.addEventListener('scroll', this.scroll.bind(this));
 
     }
     initScene(){
@@ -84,6 +85,8 @@ export class AppHome extends AppBase{
        
     }
     mouseMove(e) {
+        //If we are sphere we do not do mouse move events
+        if(this.material.uniforms.progress.value > 1) return;
         this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
         this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
 
@@ -94,12 +97,13 @@ export class AppHome extends AppBase{
         if (intersection !== null) {
             this.lastIntersection = this.clock.getElapsedTime();
 
-            gsap.to(this.material.uniforms.rippleInflunce, { duration: .5, value: 1. });
+            gsap.to(this.material.uniforms.rippleInflunce, { duration: .2, value: 1. });
             this.modifyMousePosition(intersection.point, .5);
         } else {
-            if (this.rippleStart == 0) {
+            if (this.rippleStart == 0 || this.material.uniforms.texture_influence.value < 0.5) {
                 this.modifyMousePosition(new THREE.Vector3(0, 0, 0), .5);
-                gsap.to(this.material.uniforms.rippleInflunce, { duration: .5, value: 0. });
+                if(this.material.uniforms.texture_influence.value > 0.75)
+                    gsap.to(this.material.uniforms.rippleInflunce, { duration: .5, value: 0. });
             }
         }
     }
@@ -117,12 +121,31 @@ export class AppHome extends AppBase{
             value: point.z
         });
     }
+    scroll(e) {
+        let scroll = window.scrollY * 2
+        this.material.uniforms.texture_influence.value = 1 - scroll / window.innerHeight;
+        if(scroll / window.innerHeight < .5){
+            gsap.to(this.camera.position, { duration: 2.5, x: 270, y: 500, z: 0 });
+            gsap.to(this.camera.rotation, { duration: 2.5, x: -Math.PI / 2, y: 0, z: Math.PI });
+            this.pointMultiplier =  window.innerHeight / ( Math.tan(0.5 * 60.0 * Math.PI / 180.0));
+            gsap.to(this.material.uniforms.pointMultiplier, { duration: 1.5, value: this.pointMultiplier });
+        }else  if (scroll / window.innerHeight >= .5 && scroll / window.innerHeight < 1.75) {
+            gsap.to(this.camera.position, { duration: 2.5, x: 200, y: 200, z: 370 });
+            gsap.to(this.camera.rotation, { duration: 2.5, x: -Math.PI / 6 , y: Math.PI / 12 , z: 0 });
+            this.pointMultiplier = window.innerHeight / 1.5 * ( Math.tan(0.5 * 60.0 * Math.PI / 180.0));;
+            gsap.to(this.material.uniforms.pointMultiplier, { duration: 1.5, value: this.pointMultiplier });
+        }else if (scroll/ window.innerHeight > 1.75) {  
+            gsap.to(this.camera.position, { duration: 2.5, x: 0, y: 250, z: 700 });
+            gsap.to(this.camera.rotation, { duration: 2.5, x: -Math.PI / 8, y: Math.PI / 8, z: 0 });   
+        }
+    }
+
     initScene(){
-        this.camera.position.set(270, 400, 0);
-        this.camera.position.set(0, 0, 10);
+        this.camera.position.set(270, 500, 0);
         this.camera.lookAt(0, 0, 0);
         this.camera.rotation.x = -Math.PI / 2;
-        this.camera.rotateZ(Math.PI);
+        this.camera.rotateZ(Math.PI/2);
+        this.camera.rotateY(Math.PI/8);
     }
     initTextures() {
         this.particle = new THREE.TextureLoader().load("./particle.png");
@@ -166,52 +189,25 @@ export class AppHome extends AppBase{
         this.scene.add(this.mesh);
     }
     setUpGeometryAttributes() {
-        let number = 512;
-        this.positions = new THREE.BufferAttribute(new Float32Array(number * number * 3), 3);
-        this.uvs = new THREE.BufferAttribute(new Float32Array(number * number * 2), 2);
-        let index = 0;
-        for (let i = 0; i < number; i++) {
-            let posX = i - (number / 2);
-            for (let j = 0; j < number; j++) {
-                this.positions.setXYZ(index, posX, 0, j - (number / 2));
-                this.uvs.setXY(index, i / number, j / number);
-                index++;
+        let numVertices = 512;
+        
+        this.positions = new THREE.BufferAttribute(new Float32Array(numVertices * numVertices * 3), 3);
+        this.uvs = new THREE.BufferAttribute(new Float32Array(numVertices * numVertices * 2), 2);
+        
+        let vertex = 0;
+        for (let i = 0; i < numVertices; i++) {
+            let posX = i - (numVertices / 2);
+            for (let j = 0; j < numVertices; j++) {
+                this.positions.setXYZ(vertex, posX, 0, j - (numVertices / 2));
+                this.uvs.setXY(vertex, i / numVertices, j / numVertices);
+                vertex++;
             }
         }
+       
         this.geometry.setAttribute('position', this.positions);
         this.geometry.setAttribute('uv', this.uvs);
     }
-    updateUniforms() {
-        let scroll = window.scrollY * 2
-        this.material.uniforms.texture_influence.value = 1 - scroll / window.innerHeight;
-        this.material.uniforms.u_time.value = this.time;
-        //this.material.uniforms.progress.value = window.scrollY/window.innerHeight;
 
-        if (scroll / window.innerHeight < .5) {
-            gsap.to(this.camera.position, { duration: 2.5, x: 270, y: 500, z: 0 });
-            gsap.to(this.camera.rotation, { duration: 2.5, x: -Math.PI / 2, y: 0, z: Math.PI });
-            this.randomRipples(3);
-            this.pointMultiplier =  window.innerHeight / ( Math.tan(0.5 * 60.0 * Math.PI / 180.0));
-            gsap.to(this.material.uniforms.pointMultiplier, { duration: 1.5, value: this.pointMultiplier });
-            
-        }
-        if (scroll / window.innerHeight >= .5 && window.scrollY / window.innerHeight < 1.5) {
-            gsap.to(this.camera.position, { duration: 2.5, x: 200, y: 200, z: 370 });
-            gsap.to(this.material.uniforms.progress, { duration: 2.5, value: 0 });
-            gsap.to(this.material.uniforms.rippleInflunce, { duration: .5, value: 1 });
-            gsap.to(this.camera.rotation, { duration: 2.5, x: -Math.PI / 6 , y: Math.PI / 12 , z: 0 });
-            this.pointMultiplier = window.innerHeight / 1.5 * ( Math.tan(0.5 * 60.0 * Math.PI / 180.0));;
-            gsap.to(this.material.uniforms.pointMultiplier, { duration: 1.5, value: this.pointMultiplier });
-        }
-        if (scroll/ window.innerHeight >= 1.5) {
-            console.log(this.material.uniforms.progress.value);
-            
-            gsap.to(this.camera.position, { duration: 2.5, x: 0, y: 250, z: 700 });
-            gsap.to(this.material.uniforms.progress, { duration: 3.1, value: 1.4 });
-            gsap.to(this.camera.rotation, { duration: 2.5, x: -Math.PI / 8, y: Math.PI / 8, z: 0 });
-            
-        }
-    }
     randomRipples(interval) {
         if(Math.abs(this.clock.getElapsedTime() - this.lastIntersection) > interval){
             //Do random ripple
@@ -220,7 +216,7 @@ export class AppHome extends AppBase{
                 let x = randomInterval(-250, 250);
                 let y = randomInterval(-250, 250);
                 let point = new THREE.Vector3(x, y, 0);
-                gsap.to(this.material.uniforms.rippleInflunce, { duration: .5, value: 1. });
+                gsap.to(this.material.uniforms.rippleInflunce, { duration: .2, value: 1. });
                 this.modifyMousePosition(point, 1);
             }
             if(Math.abs(this.clock.getElapsedTime() - this.rippleStart) > 1){
@@ -231,11 +227,34 @@ export class AppHome extends AppBase{
         }
     }
     updateScene() {
-        this.updateUniforms();
+        let scroll = window.scrollY * 2
+        this.material.uniforms.u_time.value = this.time;
+        this.material.uniforms.texture_influence.value = 1 - scroll / window.innerHeight;
+        
+        if(scroll / window.innerHeight < .5){
+            gsap.to(this.camera.position, { duration: 2.5, x: 270, y: 500, z: 0 });
+            gsap.to(this.camera.rotation, { duration: 2.5, x: -Math.PI / 2, y: 0, z: Math.PI });
+            gsap.to(this.material.uniforms.progress, { duration: 2.5, value: 0 });
+            this.randomRipples(3);
+            this.pointMultiplier =  window.innerHeight / ( Math.tan(0.5 * 60.0 * Math.PI / 180.0));
+            gsap.to(this.material.uniforms.pointMultiplier, { duration: 1.5, value: this.pointMultiplier });
+        }else  if (scroll / window.innerHeight >= .5 && scroll / window.innerHeight < 1.75) {
+            gsap.to(this.camera.position, { duration: 2.5, x: 200, y: 200, z: 370 });
+            gsap.to(this.material.uniforms.progress, { duration: 2.5, value: 0 });
+            gsap.to(this.material.uniforms.rippleInflunce, { duration: .2, value: 1 });
+            gsap.to(this.camera.rotation, { duration: 2.5, x: -Math.PI / 6 , y: Math.PI / 12 , z: 0 });
+            this.pointMultiplier = window.innerHeight / 1.5 * ( Math.tan(0.5 * 60.0 * Math.PI / 180.0));;
+            gsap.to(this.material.uniforms.pointMultiplier, { duration: 1.5, value: this.pointMultiplier });
+        }else if (scroll/ window.innerHeight > 1.75) {
+            gsap.to(this.material.uniforms.progress, { duration: 3.5, value: 1.4 });   
+            gsap.to(this.camera.position, { duration: 2.5, x: 0, y: 250, z: 700 });
+            gsap.to(this.camera.rotation, { duration: 2.5, x: -Math.PI / 8, y: Math.PI / 8, z: 0 });   
+        }
+
         
         this.particleMesh.rotation.y += 0.001;
+        //this.particleMesh.rotation.x -= 0.001;
         this.particleMesh.rotation.z += 0.001;
-        
     }
 }
 

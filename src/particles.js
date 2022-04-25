@@ -42,14 +42,14 @@ export default class Particles{
             sizeAttenuation: false,
             transparent: true,
             depthTest: false,
-            depthWrite: false
+            depthWrite: false,
+            fog: false
         });
+        
+        console.log(this.material);
         this.mesh = new Points(this.geometry, this.material);
     }
 
-    getMesh(){
-        //console.log(this.mesh);
-        return this.mesh;
-    }
+    getMesh = () => this.mesh;
     
 }

@@ -78,7 +78,6 @@ button {
 	font-size: inherit;
 	font-family: inherit;
 }
-
 button:focus:not(:focus-visible) {
 	outline: none;
 }
@@ -87,4 +86,37 @@ button:focus:not(:focus-visible) {
 	h1 {
 		font-size: 2.4rem;
 	}
+}
+
+.swiper {
+	height: 75vh;
+	width: 75vw;
+}
+
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+	background: rgba(255, 255, 255, 0.5) !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+	color: rgba(4, 253, 166, 0.83) !important;
+}
+
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+
 }

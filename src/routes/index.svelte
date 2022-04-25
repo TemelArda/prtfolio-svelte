@@ -7,6 +7,7 @@
 	import Canvas from '$lib/Canvas.svelte';
 	import Socials	from '$lib/socials.svelte';
 	import ProjectCard from '$lib/ProjectCard.svelte';
+	import ExprienceSlide from '$lib/ExprienceSlide.svelte'
 	export let experience = [
 		{
 			Title: 'Creatvie Developer Intern',
@@ -109,10 +110,10 @@
 				</ul>
 			</div>
 			<div class="experience-container">
-				<h2 class="h2">Experience</h2>
-				<hr />
+				<h1 style="margin: 0;" >Experience</h1>
 				<div class="experience-content">
-					{#each experience as e, i}
+					<ExprienceSlide/>
+					<!-- {#each experience as e, i}
 						<div class="experience-card">
 							<img
 								class="image"
@@ -131,7 +132,7 @@
 							</div>
 							<div class="link"><a href="{e.link}" target="_blank"><i class="fas fa-link"></i></a></div>
 						</div>
-					{/each}
+					{/each} -->
 				</div>
 			</div>
 		</div>
@@ -209,6 +210,7 @@
 				font-size: $fontL;
 				color: rgba(68, 247, 208, 0.733);
 				margin: 0;
+				font-family: $altFont;
 			}
 		}
 		.contact-body{
@@ -219,6 +221,7 @@
 				font-size: $fontR1;
 				opacity: .83;
 				margin: 0;
+				font-family: $secondaryFont;
 			}
 		}
 		.button{

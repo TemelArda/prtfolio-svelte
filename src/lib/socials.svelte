@@ -26,7 +26,7 @@
 		</li>
 		<li>
 			<a href="mailto:arda.temel98@gmail.com" target="_blank">
-				<i class="fa-solid fa-paper-plane"></i>
+				<i class="fa fa-paper-plane"></i>
 			</a>
 		</li>
 	</ul>
