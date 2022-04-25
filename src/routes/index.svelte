@@ -71,11 +71,11 @@
 				<h2 class="h2">Developer | Student | Problem Solver</h2>
 				<hr class="line" />
 				<p class="p">
-					Welcome to my portfolio! Currently I am studying Computer Science at York University in
-					Toronto, Canada. This portfolio is a place where I showcase my personal, course and
-					profesional projects. I don't know how but I am glad you ended up here!!
-					So let's get going. <br/>
-					Click on the links to get in touch with me or hover over the image for some rippless!!
+					Welcome to my online portfolio! Currently I am studying Computer Science at York University in
+					Toronto. This portfolio is a place where I showcase my personal, course and
+					profesional projects and experiences. I don't know how you end up here but I am glad you did!!
+					 <br/>
+					Click on the links to get in touch with me or scroll-down to see my projects.
 				</p>
 				<Socials isMoved="no"/>
 				<div class="button">
@@ -142,14 +142,28 @@
 				<div class="project-content">
 					<ProjectCard 
 					title = "Ray Tracer" 
-					subTitle="C++ Ray reacer - Course Project for Computer Graphics" 
+					subTitle="C++ Ray Tracer - Course Project for Computer Graphics" 
 					imageOrder = 2
 					description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.">
 					</ProjectCard>
 					<ProjectCard 
-					title = "Ray Tracer" 
-					subTitle="C++ Ray reacer - Course Project for Computer Graphics" 
+					title = "IK Solver" 
+					subTitle="Inverse Kinematics Solver in C++" 
+					imageOrder = 1
+					description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.">
+					</ProjectCard>
+					<ProjectCard 
+					title = "Spring Simulation" 
+					subTitle="Spring Mass system in C++" 
+					imageOrder = 2
+					description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.">
+					</ProjectCard>
+					<ProjectCard 
+					title = "Spline Modeling" 
+					subTitle="Hermite spline implementation in C++ for key frame animation" 
 					imageOrder = 1
 					description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.">
@@ -169,7 +183,8 @@
 						<h1>Get In Touch</h1>
 					</div>
 					<div class="contact-body">
-						<p> Currently I am looking for summer/fall internships!
+						<p> Currently I am on an internship term for summer at OssKin!
+							However, I am always interested in new oppurtunities and would love to hear from you!
 							If you are interested in working with me, please feel free to contact me.
 							My inbox is always open and I will respond to your message as soon as possible.
 						</p>
