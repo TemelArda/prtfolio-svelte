@@ -1,0 +1,63 @@
+{"experience": [
+    {
+        "Title": "'Software Developer Intern'",
+        "Company": "OssKin",
+        "Location": "'Montrael, QC'",
+        "Dates": "'May 2022 - ongoing'",
+        "src": "https://is2-ssl.mzstatic.com/image/thumb/Purple125/v4/5a/78/be/5a78be67-2acb-198e-d77b-5c97e710fa1f/source/512x512bb.jpg",
+        "alt": "Osskin Logo",
+        "description":
+        [
+            "3D modelling software that aims to mass customize 3D orthotics to specific patients’ anatomies. ",
+            "Mesh preparation preprocessing of the 3D scan of the anatomy to be used in the software.",
+            "Orthotic customization to model the orthotic with mathematical representations such as curves, splines, surfaces and meshes",
+            "Helped transition from C# to C++"
+
+        ],
+        "link": "https://www.osskin.com/"
+    },
+    {
+        "Title": "Unity Developer Intern",
+        "Company": "BMS Labs",
+        "Location": "Netherlands, Enschede",
+        "Dates": "Sept 2020 - Sept 2021",
+        "src": "./BMS.jpg",
+        "alt": "BMS Labs Logo",
+        "description":[
+            "Took part in development life cycle of multiple Unity applications, mainly focused on VR/AR apps, from concept to production.",
+            "Worked on a variety of hardware including EEG, HoloLens, Multiple VR Headsets, and Holographic Displays.",
+            "Also worked on a variety of other projects including Web and text-based games.",
+            "Developed custom shaders and extensions for Unity's built-in rendering pipeline and editor."
+        ],
+        "link": "https://bmslab.utwente.nl/"
+    },
+    {
+        "Title": "Software Developer Intern",
+        "Company": "Ravico Analytics",
+        "Location": "Toronto, ON",
+        "Dates": "May 2020 - Sept 2020",
+        "src": "./Ravico.png",
+        "alt": "Ravico Analytics Logo",
+        "description":[
+            "Practiced Agile Methodology to develop a labratory informatics system in a progressive manner.",
+			"Designed UI using Adobe XD and implemented in React.js.",
+			"Developed and Maintained serverless web-app using AWS cloud functions.",
+			"Collaborated with other developers using git."
+        ],
+        "link": "https://www.linkedin.com/company/ravico-analytics/"
+    },
+    {
+        "Title": "Peer Advisor",
+        "Company": "Lassonde school of engineering",
+        "Location": "Toronto, ON",
+        "Dates": "May 2020 - Sept 2020",
+        "src": "./Lassonde.png",
+        "alt": "Lassonde Logo",
+        "description":["Worked in collabration with the advising team in Lassonde assisting 20+ students per day.",
+                    "Prepared and delivered multiple presentations for over 200 students.",
+                    "Analayzed and curated documents, and road-maps for engineering programs offered at York University.",
+                    "Facilated and orginized orentation sessions for students."
+                    ],
+        "link": "https://lassonde.yorku.ca/"
+    }
+]}

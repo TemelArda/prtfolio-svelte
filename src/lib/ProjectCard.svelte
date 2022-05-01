@@ -3,15 +3,15 @@
 	export let subTitle;
 	export let description;
 	export let image;
-	export let url;
+	export let link;
 	export let imageOrder;
 </script>
 
 <section>
 	<div class="project-card">
-		<div class="card-content" style="order: {imageOrder % 2 + 1};">
+		<div class="card-content" style="order: {imageOrder % 2};">
 			<div class="card-header">
-				<h3 class="title">{title}</h3>
+				<h3 class="title">{title} </h3>
 				<h5 class="sub-title">{subTitle}</h5>
 			</div>
 
@@ -22,10 +22,13 @@
 				<a class="link" href="https://github.com/TemelArda" target="_blank">
 					<i class="fab fa-github fa-xl" />
 				</a>
+				<a href={link}>
+					<i>
+				</a>
 			</div>
 		</div>
-		<div class="media" style="order: {imageOrder};">
-			<img src="https://source.unsplash.com/random" alt="projectImage" />
+		<div class="media">
+			<img src={image} alt="projectImage" />
 		</div>
 	</div>
 </section>
@@ -86,7 +89,6 @@
 			color: #fff;
 			opacity: 0.55;
 			font-size: $fontXL;
-			box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2), 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12);
 			&:hover{
 				color: rgb(68, 247, 160);
 				opacity: 0.8;

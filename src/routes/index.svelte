@@ -6,41 +6,20 @@
 <script>
 	import Canvas from '$lib/Canvas.svelte';
 	import Socials	from '$lib/socials.svelte';
-	import ProjectCard from '$lib/ProjectCard.svelte';
 	import ExprienceSlide from '$lib/ExprienceSlide.svelte'
-	export let experience = [
-		{
-			Title: 'Creatvie Developer Intern',
-			Company: 'BMS Labs',
-			Location: 'Netherlands, Enschede',
-			Dates: 'Sept 2020 - Sept 2021',
-			src:"./BMS.jpg",
-			alt:"BMS Labs Logo",
-			description:"The BMS lab provides a wide range of technical services for application development.",
-			link:"https://bmslab.utwente.nl/"
-		},
-		{
-			Title: 'Software Developer Intern',
-			Company: 'Ravico Analytics',
-			Location: 'Toronto, Ontario',
-			Dates: 'May 2020 - Sept 2020',
-			src:"./Ravico.png",
-			alt:"Ravico Analytics Logo",
-			description:"Laboratory Informatics planning systems.",
-			link:"https://www.linkedin.com/company/ravico-analytics/"
-		},
-		{
-			Title: 'Peer Advisor',
-			Company: 'Lassonde school of engineering',
-			Location: 'Toronto, Ontario',
-			Dates: 'May 2020 - Sept 2020',
-			src:"./Lassonde.png",
-			alt:"Lassonde Logo",
-			description:"The Lassonde School of Engineering is a professional engineering school of York University located in Toronto, Ontario, Canada.",
-			link:"https://lassonde.yorku.ca/"
-		}
-	];
+	import ProjectsSection from '$lib/ProjectsSection.svelte'
+
 	let Container;
+
+	async function GetProjects(){
+		let response = await fetch("/project.json");
+		let data = response.json();
+		if(data.projects){
+			return data.projects;
+		}else{
+			throw new Error('No projects found');
+		}
+	}
 </script>
 
 <svelte:head>
@@ -139,42 +118,7 @@
 		<div class="grid">
 			<div class="grid-container">
 				<h1>Projects</h1>
-				<div class="project-content">
-					<ProjectCard 
-					title = "Ray Tracer" 
-					subTitle="C++ Ray Tracer - Course Project for Computer Graphics" 
-					imageOrder = 2
-					description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.">
-					</ProjectCard>
-					<ProjectCard 
-					title = "IK Solver" 
-					subTitle="Inverse Kinematics Solver in C++" 
-					imageOrder = 1
-					description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.">
-					</ProjectCard>
-					<ProjectCard 
-					title = "Spring Simulation" 
-					subTitle="Spring Mass system in C++" 
-					imageOrder = 2
-					description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.">
-					</ProjectCard>
-					<ProjectCard 
-					title = "Spline Modeling" 
-					subTitle="Hermite spline implementation in C++ for key frame animation" 
-					imageOrder = 1
-					description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.">
-					</ProjectCard>
-				</div>
-				<div class="button">
-					<a href="./resume.pdf" target="_blank">
-						See All Projects
-						<i class="fa-solid fa-chevrons-right"></i>
-					</a>
-				</div>
+				<ProjectsSection/>
 			</div>
 			<div class="grid-container">
 				<div class="contact-content">
@@ -256,13 +200,7 @@
 			width: 50%;
 			text-align: center;
 		}
-		.button{
-			margin: 0; 
-			align-self: center;
-		}
-	}
-	.project-content{
-			width: 75%;
+		
 	}
 	.container {
 		position: absolute;
