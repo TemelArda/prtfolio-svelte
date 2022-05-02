@@ -2,32 +2,34 @@
     "project":[
         {
             "title":"Inverse Kinematics Simulator",
-            "subTitle":"C++ IK Simulator using OpenGL", 
+            "subTitle":"IK Simulator - C++ OpenGL", 
             "description":"Inverse Kinematics engine for animating a human character with 7 degrees of freedom (3 in shoulder 2 in elbow and wirst). Implemented using psuedo inverse of the Jacobian Matrix. Character is able to move his arm to the 3D point supplied by a hermite curve via computing correct angles in real-time.",
             "image": "https://i.gyazo.com/68535731532751a3f4addfc38717b1d5.gif",
-            "link":"https://github.com/"
+            "github":"https://github.com/TemelArda"
 
         },
         {
             "title":"Spring Mass simulation",
-            "subTitle":"C++ Spring Mass simulation using OpenGL", 
+            "subTitle":"Spring Mass simulation - C++ OpenGL", 
             "description":"A spring mass system and a corresponding simulator that support an arbitrary number of particles. The particles can be connected with springs in arbitrary ways and are subject to external forces (drag, gravity, etc.). Real-time colision detection and response via penalty methods.",
-            "image": "https://source.unsplash.com/random",
-            "link":"https://github.com/"
+            "image": "https://i.gyazo.com/39e98d65c3ba0dfdab86af9482ba6790.gif",
+            "github":"https://github.com/TemelArda"
         },
         {
             "title":"Spline Modeling and Key frame animation",
-            "subTitle":"Hermite splines and keyframe animation implementation using OpenGL", 
+            "subTitle":"Hermite splines and keyframe animation - C++ OpenGL", 
             "description":"A spline modeling tool that supports an arbitatry number of points. Used for animating a 3D scene using keyframes. Catmull-rom initilization if no tangent values are provided for smooth curves. The spline can be exported to a file or read from a file.",
-            "image": "https://source.unsplash.com/random",
-            "link":"https://github.com/"
+            "image": "https://i.gyazo.com/9f43cd76ae016e93232f3b93212a7953.gif",
+            "github":"https://github.com/TemelArda"
         },
         {
-            "title":"Ray Tracer",
-            "subTitle":"C++ Ray Tracer", 
-            "description":".",
-            "image": "https://source.unsplash.com/random",
-            "link":"https://github.com/"
+            "title":"Woofmee",
+            "subTitle":"Orginizing play dates for dow owners - ConUHacks React.js", 
+            "description":"A web application that allows users to create and orginize play dates for their dogs. Works very similar to the dating apps where you swipe on the potential matches. There is a real-time chat feature that allows users to communicate with each other. The app is built using React.js and Firebase (Firestore).  ",
+            "image": "https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/812/718/datas/original.png",
+            "link":"https://devpost.com/software/woofmee",
+            "github":"https://github.com/mike1572/woof"
+
         }
     ]
 }

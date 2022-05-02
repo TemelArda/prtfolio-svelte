@@ -5,6 +5,7 @@
 	export let image;
 	export let link;
 	export let imageOrder;
+	export let github;
 </script>
 
 <section>
@@ -19,12 +20,14 @@
 				<p class="description">{description}</p>
 			</div>
 			<div class="card-footer">
-				<a class="link" href="https://github.com/TemelArda" target="_blank">
+				<a class="link" href={github ? github : "https://github.com/TemelArda"} target="_blank">
 					<i class="fab fa-github fa-xl" />
 				</a>
-				<a href={link}>
-					<i>
+				{#if link}
+				<a class="link" href={link} target="_blank">
+					<i class="fas fa-external-link-alt"></i>
 				</a>
+				{/if}
 			</div>
 		</div>
 		<div class="media">
@@ -87,13 +90,14 @@
 		}
 		.link{
 			color: #fff;
-			opacity: 0.55;
+			opacity: 0.5;
 			font-size: $fontXL;
 			&:hover{
 				color: rgb(68, 247, 160);
 				opacity: 0.8;
 			}
 			transition: all 0.3s ease-in-out;
+			margin: 0 0 0 4px ;
 		}
 		.media {
 			width: 50%;

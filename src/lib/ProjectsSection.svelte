@@ -3,30 +3,37 @@
     import { onMount } from 'svelte/internal'
     
     let projects = []
+	let AllProjects = []
     let buttonText = "Expand"
     let expanded = false;
 
-    onMount(async () =>{
-        const response = await fetch('/project.json');
+    onMount(GetlAllProjects)
+
+	async function GetlAllProjects () {
+		const response = await fetch('/project.json');
 		const data = await response.json();
 		if (data.project) {
-  
-			projects =  data.project;
+			AllProjects =  data.project;
+			projects = AllProjects.slice(0,2)
 		}else{
 			throw new Error('No experience found');
 		}
-    })
+	};
 
 
-    function onButtonClick(){
-        console.log(expanded);
-        if(!expanded){
-            buttonText = "Expand";
-        }else{
-            buttonText = "Shrink";
-        }
-        expanded = !expanded;
-    }
+
+	function toggleExpand(){
+		expanded = !expanded;
+		if(expanded){
+			projects = AllProjects;
+			buttonText = "Collapse"
+		}else{
+			projects = AllProjects.slice(0,2)
+			buttonText = "Expand"
+		}
+	}
+
+    
 </script>
 
 <section>
@@ -39,11 +46,12 @@
 			description={p.description}
 			image={p.image}
 			link={p.link}
+			github={p.github}
 		/>
             >
         {/each}
 	</div>
-	<div class="button" on:click ={onButtonClick}>
+	<div class="button" on:click ={toggleExpand}>
 		<p>
 			{buttonText}
 			<i class="fa-solid fa-chevrons-right" />

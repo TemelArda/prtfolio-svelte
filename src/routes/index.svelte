@@ -51,8 +51,8 @@
 				<hr class="line" />
 				<p class="p">
 					Welcome to my online portfolio! Currently I am studying Computer Science at York University in
-					Toronto. This portfolio is a place where I showcase my personal, course and
-					profesional projects and experiences. I don't know how you end up here but I am glad you did!!
+					Toronto. I have exprience in C++, Unity, XR and Web-development. This portfolio is a place where I showcase my personal, profesional and
+					course projects and experiences. I don't know how you end up here but I am glad you did!!
 					 <br/>
 					Click on the links to get in touch with me or scroll-down to see my projects.
 				</p>

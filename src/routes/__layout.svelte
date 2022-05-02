@@ -1,11 +1,10 @@
 <script>
 	import Header from '$lib/header/Header.svelte';
-	import Footer from '$lib/footer.svelte';
 	import '../app.scss';
 	
 </script>
 
-<Header />
+<!-- <Header /> -->
 <main>
 	<slot />
 </main>
