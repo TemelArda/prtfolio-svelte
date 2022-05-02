@@ -50,9 +50,9 @@
 				<h2 class="h2">Developer | Student | Problem Solver</h2>
 				<hr class="line" />
 				<p class="p">
-					Welcome to my online portfolio! Currently I am studying Computer Science at York University in
+					Welcome to my online portfolio, I am glad you ended up here!! Currently I am studying Computer Science at York University in
 					Toronto. I have exprience in C++, Unity, XR and Web-development. This portfolio is a place where I showcase my personal, profesional and
-					course projects and experiences. I don't know how you end up here but I am glad you did!!
+					course projects and experiences. 
 					 <br/>
 					Click on the links to get in touch with me or scroll-down to see my projects.
 				</p>
