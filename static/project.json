@@ -1,6 +1,14 @@
 {
     "project":[
         {
+            "title":"Ray Tracer",
+            "subTitle":"Multi threaded RayTracer - C++ ",
+            "description":"A ray tracer that supports multiple light sources, shadows, reflections, refractions, and anti-aliasing and paralel processing. The ray tracer is able to render a 4K image in less than 10 seconds.",
+            image: "https://gyazo.com/1ff0c7c57a105509e95faee982326449",
+            "github":"https://github.com/TemelArda/RayTraceApp" 
+            
+        },
+        {
             "title":"Inverse Kinematics Simulator",
             "subTitle":"IK Simulator - C++ OpenGL", 
             "description":"Inverse Kinematics engine for animating a human character with 7 degrees of freedom (3 in shoulder 2 in elbow and wirst). Implemented using psuedo inverse of the Jacobian Matrix. Character is able to move his arm to the 3D point supplied by a hermite curve via computing correct angles in real-time.",
