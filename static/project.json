@@ -4,7 +4,7 @@
             "title":"Ray Tracer",
             "subTitle":"Multi threaded RayTracer - C++ ",
             "description":"A ray tracer that supports multiple light sources, shadows, reflections, refractions, and anti-aliasing and paralel processing. The ray tracer is able to render a 4K image in less than 10 seconds.",
-            "image": "https://gyazo.com/1ff0c7c57a105509e95faee982326449",
+            "image": "https://i.gyazo.com/1ff0c7c57a105509e95faee982326449.png",
             "github":"https://github.com/TemelArda/RayTraceApp" 
             
         },
