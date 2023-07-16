@@ -47,14 +47,17 @@
 			</div>
 			<div class="grid-item">
 				<h1 class="h1">Hey! I am Arda</h1>
-				<h2 class="h2">Developer | Student | Problem Solver</h2>
+				<h2 class="h2">Software Developer | C++ & C# | XR Development</h2>
 				<hr class="line" />
 				<p class="p">
-					Welcome to my online portfolio, I am glad you ended up here!! Currently I am studying Computer Science at York University in
-					Toronto. I have exprience in C++, Unity, XR and Web-development. This portfolio is a place where I showcase my personal, profesional and
-					course projects and experiences. 
-					 <br/>
-					Click on the links to get in touch with me or scroll-down to see my projects.
+					With a passion for creating innovative solutions, I have successfully contributed to projects in various domains,
+					including real-time applications, virtual reality, and web development.
+					I invite you to explore my portfolio, where you'll find a collection of my notable projects and experiences, 
+					showcasing my technical skills. Let's connect and collaborate to bring cutting-edge ideas to life!
+					<br/>
+					Click on the links to get in touch with me or scroll-down to see some of my projects!
+					<br/>
+					Also, image behind is interactive so, just hover to create some ripples!!
 				</p>
 				<Socials isMoved="no"/>
 				<div class="button">
