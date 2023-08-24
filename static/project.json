@@ -1,7 +1,7 @@
 {
     "project":[
         {
-            "title":"Flt and Wireframe Shading ",
+            "title":"Flat and Wireframe Shading ",
             "subTitle":"Flat and wireframe shader in OpenGL 4.5 - C++",
             "description":"Wireframe shading using geometry shader and flat shading using fragment shader. Implemented following tutorials here: https://catlikecoding.com/unity/tutorials/advanced-rendering/flat-and-wireframe-shading/.",
             "image": "https://i.gyazo.com/32d561a218946dea539bfddf58237763.png",
