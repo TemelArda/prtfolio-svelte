@@ -47,13 +47,13 @@
 			</div>
 			<div class="grid-item">
 				<h1 class="h1">Hey! I am Arda</h1>
-				<h2 class="h2">Software Developer | C++ & C# | XR Development</h2>
+				<h2 class="h2">Software Designer | C++ & C# </h2>
 				<hr class="line" />
 				<p class="p">
-					With a passion for creating innovative solutions, I have successfully contributed to projects in various domains,
-					including real-time applications, virtual reality, and web development.
-					I invite you to explore my portfolio, where you'll find a collection of my notable projects and experiences, 
-					showcasing my technical skills. Let's connect and collaborate to bring cutting-edge ideas to life!
+					I am passioate about software design and 3D computer graphics. 
+					This web page is to mainly share my projects with the world!
+					Currently, I am working at Matrox as a software designer.
+					Please feel free to explore my projects and expirences, and if anything peeks your interest let connect!
 					<br/>
 					Click on the links to get in touch with me or scroll-down to see some of my projects!
 					<br/>
