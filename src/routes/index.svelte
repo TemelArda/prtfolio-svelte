@@ -51,13 +51,13 @@
 				<hr class="line" />
 				<p class="p">
 					I am passioate about software design and 3D computer graphics. 
-					This web page is to mainly share my projects with the world!
-					Currently, I am working at Matrox as a software designer.
-					Please feel free to explore my projects and expirences, and if anything peeks your interest let connect!
+					This web page is to mainly share personal projects i worked on with the world!
+					Currently, I work at Matrox as a software designer.
+					Please feel free to explore some of my projects and expirences, and if anything peeks your interest let's connect!
 					<br/>
-					Click on the links to get in touch with me or scroll-down to see some of my projects!
+					Click on the links to get in touch with me or scroll-down to see more...
 					<br/>
-					Also, image behind is interactive so, just hover to create some ripples!!
+					Also, image behind is interactive, hover to create some ripples!!
 				</p>
 				<Socials isMoved="no"/>
 				<div class="button">
