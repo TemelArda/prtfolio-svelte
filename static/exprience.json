@@ -1,9 +1,26 @@
 {"experience": [
     {
-        "Title": "Software Developer Intern",
+        "Title": "Software Designer",
+        "Company": "Matrox",
+        "Location": "Montrael, QC",
+        "Dates": "June 2023 - ongoing",
+        "src": "./matrox.jpg",
+        "alt": "Matrox Logo",
+        "description":
+        [
+            "Integrated live broadcasting solutions, in a large-scale C++, C# code base.",
+            "Production ready real-time AV content streaming using technologies such as NDI, SRT, and RTMP.",
+            "Pixel conversion algorithms using C, SIMD, and OpenGL enabling transmission, receiving, and rendering of video in variety of user-specified formats",
+            "pattern matching algorithms for audio signals, enabling automated tests of audio streams, reducing bug encounters by 70% and accelerating development timelines"
+
+        ],
+        "link": "https://video.matrox.com/en"
+    },
+    {
+        "Title": "Software Developer",
         "Company": "OssKin",
         "Location": "Montrael, QC",
-        "Dates": "May 2022 - ongoing",
+        "Dates": "May 2022 - June 2023",
         "src": "https://is2-ssl.mzstatic.com/image/thumb/Purple125/v4/5a/78/be/5a78be67-2acb-198e-d77b-5c97e710fa1f/source/512x512bb.jpg",
         "alt": "Osskin Logo",
         "description":

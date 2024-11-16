@@ -1,9 +1,9 @@
 {
     "project":[
         {
-            "title":"Flat and Wireframe Shading ",
-            "subTitle":"Flat and wireframe shader in OpenGL 4.5 - C++",
-            "description":"Wireframe shading using geometry shader and flat shading using fragment shader. Implemented following tutorials here: https://catlikecoding.com/unity/tutorials/advanced-rendering/flat-and-wireframe-shading/.",
+            "title":"Realtime 3D Renderer",
+            "subTitle":"3D Renderer with Entity Component System using OpenGL 4.5 - C++",
+            "description":"Feature set includes entitiy component system to add additonal functionality to scene objects, different material and shading types, importing 3d models from applications such as Blender.",
             "image": "https://i.gyazo.com/32d561a218946dea539bfddf58237763.png",
             "github":"https://github.com/TemelArda/GameDemo/blob/master/Resources/Shaders/Wireframe.glsl" 
             
